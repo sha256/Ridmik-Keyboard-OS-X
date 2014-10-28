@@ -3,29 +3,37 @@
 #import "ApplicationDelegate.h"
 
 
+
 @implementation RidmikInputController
 
 
 -(BOOL) inputText:(NSString *)string key:(NSInteger)keyCode modifiers:(NSUInteger)flags client:(id)sender
-//-(BOOL)inputText:(NSString*)string client:(id)sender
 {
-		// Return YES to indicate the the key input was received and dealt with.  Key processing will not continue in that case.
-		// In other words the system will not deliver a key down event to the application.
-		// Returning NO means the original key down will be passed on to the client.
-		BOOL					inputHandled = NO;
+    // Return YES to indicate the the key input was received and dealt with.  Key processing will not continue in that case.
+    // In other words the system will not deliver a key down event to the application.
+    // Returning NO means the original key down will be passed on to the client.
     
-        NSLog(@"Input:%@ key:%ld modifiers:%lx", string, keyCode, flags);
-		
-        NSRange range = [string rangeOfString:@"^[a-zA-Z]+$" options: NSRegularExpressionSearch];
-        if(range.location != NSNotFound){
-            [self originalBufferAppend:string client:sender];
-            inputHandled = YES;
-            return YES;
-        } else {
-			// If the input isn't part of a decimal number see if we need to convert the previously input text.
-			inputHandled = [self convert:string key:keyCode client:sender];
-		}
-        return inputHandled;
+    
+    if (flags & NSCommandKeyMask){
+        return NO;
+    }
+
+    
+    BOOL					inputHandled = NO;
+
+  //  NSLog(@"Input:%@ key:%ld modifiers:%lx", string, keyCode, flags);
+    
+    
+    NSRange range = [string rangeOfString:@"^[a-zA-Z]+$" options: NSRegularExpressionSearch];
+    if(range.location != NSNotFound){
+        [self originalBufferAppend:string client:sender];
+        inputHandled = YES;
+        return YES;
+    } else {
+        // If the input isn't part of a decimal number see if we need to convert the previously input text.
+        inputHandled = [self convert:string key:keyCode client:sender];
+    }
+    return inputHandled;
 }
 
 /*!
@@ -82,7 +90,7 @@
 	NSMutableString*		buffer = [self originalBuffer];
 	[buffer appendString: string];
     
-    NSLog(@"Final Buffer: %@", buffer);
+    //NSLog(@"Final Buffer: %@", buffer);
     
     NSString* news = [[[NSApp delegate] conversionEngine] convert:buffer];
     
@@ -94,13 +102,8 @@
                               nil];
     
     NSMutableAttributedString *attrString = [[[NSMutableAttributedString alloc] initWithString:news attributes:attrDict] autorelease];
-    
+        
     [sender setMarkedText:attrString selectionRange:NSMakeRange(0, [news length]) replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-
-    
-	//[sender setMarkedText:news selectionRange:NSMakeRange(0, [news length]) replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-    
-    
 
 }
 
@@ -122,17 +125,8 @@
 		convertedString = [[[NSApp delegate] conversionEngine] convert:originalText];
 		[self setComposedBuffer:convertedString];
 		[sender setMarkedText:convertedString selectionRange:NSMakeRange(_insertionIndex, 0) replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
-        
-//        NSDictionary *attrDict = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                  [NSNumber numberWithInt:0], NSMarkedClauseSegmentAttributeName,
-//                                  [NSNumber numberWithInt:NSUnderlineStyleNone], NSUnderlineStyleAttributeName,
-//                                  nil];
-//        
-//        NSMutableAttributedString *attrString = [[[NSMutableAttributedString alloc] initWithString:convertedString attributes:attrDict] autorelease];
-//        
-//        [sender setMarkedText:attrString selectionRange:NSMakeRange(_insertionIndex, 0) replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
 
-	}
+    }
 }
 
 
@@ -150,10 +144,7 @@
     convertedString = [[[NSApp delegate] conversionEngine] convert:originalText];
     [self setComposedBuffer:convertedString];
     [self commitComposition:sender];
-    [sender insertText:trigger replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-    handled = YES;
-    
-    NSLog(@"original: %@, composed: %@", originalText, convertedString);
+    handled = NO;
 
 	return handled;
 }

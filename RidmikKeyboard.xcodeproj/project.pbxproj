@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B61472B19045AE40066ED84 /* libjre_emul.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B61472A19045AE40066ED84 /* libjre_emul.a */; };
 		6B862E231902BF6B00AC9B5D /* BanglaUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B862E201902BF6B00AC9B5D /* BanglaUnicode.m */; };
 		6B862E241902BF6B00AC9B5D /* RidmikParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B862E221902BF6B00AC9B5D /* RidmikParser.m */; };
 		6BAC19B71902B01900C6F310 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 6BAC19B31902AD4500C6F310 /* MainMenu.nib */; };
@@ -31,7 +30,7 @@
 		32CA4F630368D1EE00C91783 /* RidmikKeyboard_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RidmikKeyboard_Prefix.pch; sourceTree = "<group>"; };
 		6B0EA44C1902A7DF0091BB51 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B1F70D91902920B004474D4 /* RidmikKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RidmikKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B61472A19045AE40066ED84 /* libjre_emul.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjre_emul.a; path = "../../../Misc/iOS/j2objc-0.9.1/dist/lib/libjre_emul.a"; sourceTree = "<group>"; };
+		6B856CFD19070D2500BC836B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		6B862E1F1902BF6B00AC9B5D /* BanglaUnicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BanglaUnicode.h; sourceTree = "<group>"; };
 		6B862E201902BF6B00AC9B5D /* BanglaUnicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BanglaUnicode.m; sourceTree = "<group>"; };
 		6B862E211902BF6B00AC9B5D /* RidmikParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RidmikParser.h; sourceTree = "<group>"; };
@@ -55,7 +54,6 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				E93074B70A5C264700470842 /* InputMethodKit.framework in Frameworks */,
-				6B61472B19045AE40066ED84 /* libjre_emul.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +130,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B61472A19045AE40066ED84 /* libjre_emul.a */,
+				6B856CFD19070D2500BC836B /* CoreText.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);

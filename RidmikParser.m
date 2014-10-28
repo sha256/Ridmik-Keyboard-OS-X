@@ -6,7 +6,8 @@
 
 @implementation RidmikParser
 
-- (id)init {
+- (id)init
+{
     
     self = [super init];
     if (self) {
@@ -17,7 +18,8 @@
 }
 
 
--(NSString*) toBangla:(NSString *)engWord {
+-(NSString*) toBangla:(NSString *)engWord
+{
  
     NSMutableString* st = [[NSMutableString alloc] init];
     char carry = 0;
@@ -235,30 +237,35 @@
     return [st description];
 }
 
--(BOOL) isVowel: (char) now {
+-(BOOL) isVowel: (char) now
+{
     if([@"AEIOUaeiou" rangeOfString:[NSString stringWithFormat:@"%c", now]].location == NSNotFound)
         return false;
     return true;
 }
 
--(BOOL) isConsonant: (char) now {
+-(BOOL) isConsonant: (char) now
+{
     return ![self isVowel:now] && isalpha(now);
 }
 
 
--(BOOL) isCharInString: (char) now :(NSString*) foo {
+-(BOOL) isCharInString: (char) now :(NSString*) foo
+{
     if([foo rangeOfString:[NSString stringWithFormat:@"%c", now]].location == NSNotFound)
         return false;
     return true;
 }
 
--(BOOL) isStringInString: (NSString*) string :(NSString*) foo {
+-(BOOL) isStringInString: (NSString*) string :(NSString*) foo
+{
     if([foo rangeOfString:string].location == NSNotFound)
         return false;
     return true;
 }
 
--(BOOL) dualSitsUnder: (char) thirdCarry :(char) secondCarry :(char) carry :(char) now {
+-(BOOL) dualSitsUnder: (char) thirdCarry :(char) secondCarry :(char) carry :(char) now
+{
     
     if(secondCarry == 'r' && thirdCarry == 'r')
         return true;
@@ -283,7 +290,8 @@
     return false;
 }
 
--(BOOL) notJukta: (char) thirdCarry :(char) secondCarry :(char) carry :(char) now {
+-(BOOL) notJukta: (char) thirdCarry :(char) secondCarry :(char) carry :(char) now
+{
     
     if(secondCarry == 'n' && carry == 'g' && now == 'r')
         return true;
@@ -307,7 +315,8 @@
     return true;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [unicode release];
     [super dealloc];
 }
