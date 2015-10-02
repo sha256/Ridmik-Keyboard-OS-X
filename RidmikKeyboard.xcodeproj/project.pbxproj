@@ -260,7 +260,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -273,7 +273,7 @@
 					"$(inherited)",
 					"/Users/sha256/Misc/iOS/j2objc-0.9.1/dist/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = RidmikKeyboard;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -300,7 +300,7 @@
 					"$(inherited)",
 					"/Users/sha256/Misc/iOS/j2objc-0.9.1/dist/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = RidmikKeyboard;
 				SDKROOT = macosx;
 				SKIP_INSTALL = NO;

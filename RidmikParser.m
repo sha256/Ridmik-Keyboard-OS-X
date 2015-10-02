@@ -17,6 +17,19 @@
     return self;
 }
 
+- (NSString*) getOther: (NSString*) ww {
+    return [unicode getOther:ww];
+}
+
++ (RidmikParser *) getInstance {
+    
+    static RidmikParser *shared = nil;
+    
+    if (!shared)
+        shared = [[RidmikParser alloc] init];
+    
+    return shared;
+}
 
 -(NSString*) toBangla:(NSString *)engWord
 {

@@ -7,10 +7,18 @@
 
 -(NSString*)convert:(NSString*)string
 {
-    RidmikParser*   parser = [[RidmikParser alloc] init];
+    RidmikParser*   parser =[[RidmikParser alloc] init];
 	NSString *converted = [parser toBangla:string];
 	return converted;
 }
+
+-(NSString*)convertOther:(NSString*)string
+{
+    RidmikParser*   parser = [[RidmikParser alloc] init];
+    NSString *converted = [parser getOther:string];
+    return converted;
+}
+
 
 -(void)dealloc {
     [super dealloc];

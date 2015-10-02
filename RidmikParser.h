@@ -9,8 +9,9 @@
 }
 
 - (id)init;
-
++ (RidmikParser *) getInstance;
 - (NSString *)toBangla:(NSString *)engWord;
+- (NSString*) getOther: (NSString*) ww;
 
 - (BOOL)isVowel:(char)now;
 

@@ -16,6 +16,7 @@
     NSDictionary* jkt;
     NSDictionary* djkt;
     NSDictionary* djktt;
+    NSDictionary* other;
     
 }
 
@@ -28,6 +29,6 @@
 -(NSString*) getDualJkt:(char)secondCarry :(char)carry;
 -(NSString*) getDjkt:(char)secondCarry :(char)carry;
 -(NSString*) getDjktt:(char)secondCarry :(char)carry;
-
+-(NSString*) getOther: (NSString*) w;
 
 @end

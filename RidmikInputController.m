@@ -21,7 +21,7 @@
     
     BOOL					inputHandled = NO;
 
-  //  NSLog(@"Input:%@ key:%ld modifiers:%lx", string, keyCode, flags);
+  // NSLog(@"Input:%@ key:%ld modifiers:%lx", string, keyCode, flags);
     
     
     NSRange range = [string rangeOfString:@"^[a-zA-Z]+$" options: NSRegularExpressionSearch];
@@ -29,10 +29,22 @@
         [self originalBufferAppend:string client:sender];
         inputHandled = YES;
         return YES;
-    } else {
-        // If the input isn't part of a decimal number see if we need to convert the previously input text.
-        inputHandled = [self convert:string key:keyCode client:sender];
+    } 
+
+      NSRange r2 = [string rangeOfString:@"^[0-9|]$" options: NSRegularExpressionSearch];
+    
+    if (r2.location !=  NSNotFound){
+        [self commitComposition: sender];
+        [self setComposedBuffer: [[[NSApp delegate] conversionEngine] convertOther:string]];
+        [self commitComposition: sender];
+        return YES;        
     }
+
+        // If the input isn't part of a decimal number see if we need to convert the previously input text.
+    inputHandled = [self convert:string key:keyCode client:sender];
+    
+    //NSLog(@"Before inputtext finish");
+   
     return inputHandled;
 }
 
@@ -48,6 +60,7 @@
 
 	if ( text == nil || [text length] == 0 ) {
 		text = [self originalBuffer];
+       // NSLog(@"composed buffer empty");
 	}
 	
 	[sender insertText:text replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
@@ -93,6 +106,7 @@
     //NSLog(@"Final Buffer: %@", buffer);
     
     NSString* news = [[[NSApp delegate] conversionEngine] convert:buffer];
+    [self setComposedBuffer:news];
     
 	_insertionIndex++;
     
@@ -140,6 +154,7 @@
         [self deleteBackward:sender];
         return YES;
     }
+
     
     convertedString = [[[NSApp delegate] conversionEngine] convert:originalText];
     [self setComposedBuffer:convertedString];

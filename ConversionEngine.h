@@ -21,6 +21,7 @@
 	@discussion		convert takes the input text buffer as input a returns a string that has been formatted to a given number format.
 */
 -(NSString*)convert:(NSString*)string;
+-(NSString*)convertOther:(NSString*)string;
 
 /*
 	@method
