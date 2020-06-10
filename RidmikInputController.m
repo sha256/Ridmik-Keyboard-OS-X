@@ -31,7 +31,7 @@
         return YES;
     } 
 
-      NSRange r2 = [string rangeOfString:@"^[0-9|]$" options: NSRegularExpressionSearch];
+      NSRange r2 = [string rangeOfString:@"^[0-9|:]$" options: NSRegularExpressionSearch];
     
     if (r2.location !=  NSNotFound){
         [self commitComposition: sender];
